@@ -1,0 +1,119 @@
+// Replace the background pattern PNG with the matching SVG (background.svg).
+// Use CSS to resize the SVG to match the original design.
+
+// Replace rasterized PNG logo with the SVG logo image of the same size (logo.svg):
+// use the inline SVG method to add it (you'll use CSS to modify the image).
+
+body {
+  background: url('../svgs/background.svg') #edeff0;
+  background-size: 53px 50px;
+}
+
+.logo {
+  width: 140px;
+  height: 120px;
+}
+
+// At a page width of less than 420 pixels remove the text from the logo and add an H1 tag that contains the logo text.
+
+  //sass variables
+  $brk-mobile : '(max-width: 420px)';
+
+  //sass mixins
+  @mixin mobile {
+    @media #{$brk-mobile}{
+      @content;
+    }
+  }
+
+  //hide logo text
+  .st1 {
+    @include mobile{
+    display:none;
+    }
+  }
+
+  // create h1 text
+.logo_text{
+  display: none;
+}
+.logo_text{
+  @include mobile{
+    display: block;
+  }
+}
+
+// Replace dogs with SVG images of the same size using the <img> tag.
+
+.doges svg {
+  width: 170px;
+  height: 170px;
+}
+
+// Change icons in the menu from rasterized images to inline SVGs keeping the original image size the same.
+
+@mixin short {
+  height: 13px;
+}
+
+@mixin tall {
+  height: 14px;
+}
+
+.nav_icon_short {
+  @include short;
+}
+
+.nav_icon_tall {
+  @include tall;
+}
+
+// When a user hovers over the menu icons, use CSS to change their color to match the menu item text color.
+
+.nav_icon_tall:hover .st0,
+.nav_icon_short:hover .st0 {
+  fill: #111;
+}
+
+// Use inline SVGs for the images of the dogs and then change the color of the dogs' coats using a CSS style sheet to match the original colors of the dogs. (You can find the colors used by looking at the CSS within the SVG dog files)
+
+// Add additional CSS effects, like transition effects to the menu icon hover state.
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  30%{
+    transform: scale(.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(.9);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+}
+
+#logo:hover{
+  transform-origin: 50% 50%;
+  animation: grow 1s ease-out backwards;
+}
+
+.doges li{
+	animation: grow .6s ease-out forwards;
+}
+	.doges li:nth-of-type(1) {
+		animation-delay: .3s, 1.3s;
+	}
+	.doges li:nth-of-type(2) {
+		animation-delay: .5s, 1.5s;
+	}
+	.doges li:nth-of-type(3) {
+		animation-delay: .8s, 1.8s;
+	}
+  .doges li:nth-of-type(4) {
+		animation-delay: 1s, 2s;
+	}
